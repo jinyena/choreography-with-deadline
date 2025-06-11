@@ -1,24 +1,14 @@
-# my-app
+## How To Run
 
-## Project setup
+1. Install node modules
+
 ```
+nvm install 20.17.0 // node-version change
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+2. Run Frontend Server
 
-### Compiles and minifies for production
 ```
-npm run build
+npm run dev
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,35 +1,47 @@
-<template>
+--<template>
     <div>
-        <div v-if="editMode" style="margin-top:-20px;">
+        <div v-if="editMode">
+            <div class="label-title" style="margin-left: 5px;">{{label}}</div>
             <v-text-field 
-                    :label="label" 
-                    v-model="value"
-                    @change="change"
+                v-bind="$attrs"
+                v-model="value"
+                @change="change"
+                label="입력하세요."
+                outlined
+                single-line
             />
         </div>
         <div v-else>
-            {{label}} :  {{value}}
+            {{label}} : {{value}}
         </div>
     </div>
 </template>
-
 <script>  
     export default {
         name: 'String',
         components:{
         },
         props: {
-            value:{
+            modelValue:{
                 type: String,
-                default: ''
+                default: null /// TODO '' is not null !
             },
             editMode: Boolean,
-            label: String
+            label: String,
+        },
+        data: () => ({
+            value: null,
+        }),
+        created(){
+            this.value = this.modelValue
         },
         methods:{
             change(){
-                this.$emit("input", this.value);
+                if(this.modelValue===null) this.value = null  //TODO '' is not null
+                this.$emit("update:modelValue", this.value);
             }
         }
     }
 </script>
+<style>
+</style>
